@@ -96,26 +96,56 @@ namespace ChessConsole
 
         public static void PutPieceOnCellbyIndex(int index, Piece piece)
         {
-
-            pieces[index] =  piece;
-                
+            pieces[index] =  piece;   
            
         }
+
+        public static Piece GetPieceFromChar(string str)
+        {
+            int index = findIndexByNotation(str[0], (int)Char.GetNumericValue(str[2]));
+
+            return pieces[index];
+        }
+
 
 
         public static void PutPieceOnCellbyNotation(string str, Piece piece)        
         {
-            char ch0 = str[0];
-            int ver0 = (int)Char.GetNumericValue(str[1]);
+            if (piece.IsPion())
+            {
+                char ch0 = str[0];
+                int ver0 = (int)Char.GetNumericValue(str[1]);
 
 
-            char ch1 = str[2];
-            int ver1 = (int)Char.GetNumericValue(str[3]);
+                char ch1 = str[2];
+                int ver1 = (int)Char.GetNumericValue(str[3]);
+                PutPieceOnCellbyNotation(ch1, ver1, piece);
+                PutPieceOnCellbyNotation(ch0, ver0, null);
+            }
+            else
+            {
+                char ch0 = str[0];
+
+                
+
+                char ch1 = str[1];
+                int ver1 = (int)Char.GetNumericValue(str[2]);
+
+                string str2 = str[1].ToString() + str[2].ToString();
+
+                Piece piece2 = GetPieceFromChar(str2);
+
+                char ch2 = str[3];
+                int ver2 = (int)Char.GetNumericValue(str[4]);
+
+                PutPieceOnCellbyNotation(ch1, ver1, piece2);
+                PutPieceOnCellbyNotation(ch2, ver2, null);
+            }
+            
 
 
            
-            PutPieceOnCellbyNotation(ch1, ver1, piece);
-            PutPieceOnCellbyNotation(ch0, ver0, null);
+            
 
         }
 
@@ -300,6 +330,15 @@ namespace ChessConsole
             Color = color;
         }
 
+        public bool IsPion()
+        {
+            if (Name == "Pion")
+            {
+                return true;
+            }
+            return false;
+
+        }
         public void ToShow()
         {
 
