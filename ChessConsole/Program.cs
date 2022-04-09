@@ -150,7 +150,7 @@ namespace ChessConsole
             
 
 
-        public static void BeginInitialisationBoard(dfsdfdsf)
+        public static void BeginInitialisationBoard()
         {
             PutPieceOnCellbyNotation('a', 8, new Piece
             {
