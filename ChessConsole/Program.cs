@@ -149,7 +149,8 @@ namespace ChessConsole
         }     
             
 
-        public static void BeginInitialisationBoard()
+
+        public static void BeginInitialisationBoard(dfsdfdsf)
         {
             PutPieceOnCellbyNotation('a', 8, new Piece
             {
